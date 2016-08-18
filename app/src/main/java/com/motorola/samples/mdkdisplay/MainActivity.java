@@ -168,7 +168,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             textView.setOnClickListener(this);
         }
 
-        textView = (TextView)findViewById(R.id.mod_external_buy_mdk);
+        textView = (TextView)findViewById(R.id.mod_source_code);
         if (textView != null) {
             textView.setOnClickListener(this);
         }
@@ -359,8 +359,16 @@ public class MainActivity extends Activity implements View.OnClickListener {
         if (null != tvName) {
             if (null != device) {
                 tvName.setText(device.getProductString());
+
+                if (device.getVendorId() == Constants.VID_MDK
+                        && device.getProductId() == Constants.PID_MDK_DISPLAY) {
+                    tvName.setTextColor(getColor(R.color.mod_match));
+                } else {
+                    tvName.setTextColor(getColor(R.color.mod_mismatch));
+                }
             } else {
                 tvName.setText(getString(R.string.na));
+                tvName.setTextColor(getColor(R.color.mod_na));
             }
         }
 
@@ -478,9 +486,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 /** The Developer Portal link is clicked */
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.URL_DEV_PORTAL)));
                 break;
-            case R.id.mod_external_buy_mdk:
+            case R.id.mod_source_code:
                 /** The Buy Mods link is clicked */
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.URL_MOD_STORE)));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.URL_SOURCE_CODE)));
                 break;
             case R.id.status_choose_image:
                 /** The Presentation Photo button is clicked */

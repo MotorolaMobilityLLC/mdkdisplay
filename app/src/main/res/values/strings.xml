@@ -36,8 +36,8 @@
     <string name="mod_external_link">Learn more</string>
     <!-- description: [Developer site menu caption] -->
     <string name="mod_external_dev_portal">Moto Mods™ Developer Portal</string>
-    <!-- description: [Buy Mod menu caption] -->
-    <string name="mod_external_buy_mdk">Buy Moto Mods™ Development Kit</string>
+    <!-- description: [Source on Github] -->
+    <string name="mod_source_code">Source code</string>
     <!-- description: [Privacy Policy menu caption] -->
     <string name="action_privacy_policy">Privacy Policy</string>
 
@@ -85,8 +85,6 @@
     <string name="about_content">Version: <xliff:g id="version_name">%1$s</xliff:g>\n\nPhone UID: <xliff:g id="phone_uid">%2$s</xliff:g>\n\nMoto Mods UID: <xliff:g id="mod_uid">%3$s</xliff:g>\n\nRequired Moto Mods SDK: <xliff:g id="sdk_version">%4$s</xliff:g></string>
     <!-- description: [Mod service information] -->
     <string name="about_service">Moto Mods Platform Version: <xliff:g id="main_version">%1$d</xliff:g>.<xliff:g id="minor_version">%2$d</xliff:g>\nMoto Mods SDK Version: <xliff:g id="main_version">%3$d</xliff:g>.<xliff:g id="minior_version">%4$d</xliff:g>\n<xliff:g id="mod_service_status">%5$s</xliff:g></string>
-    <!-- description: [MDKDisplay source code link on Github] -->
-    <string name="host_url"><a href="https://github.com/MotorolaMobilityLLC/mdkdisplay">Project on Github</a></string>
 
     <!-- description: [Mod Display caption] -->
     <string name="mod_display">Moto Mods Display</string>

@@ -33,4 +33,8 @@
 
     <color name="status_charging">@android:color/holo_blue_dark</color>
     <color name="uncharging">@android:color/secondary_text_dark</color>
+
+    <color name="mod_match">@android:color/holo_green_light</color>
+    <color name="mod_mismatch">@android:color/holo_red_light</color>
+    <color name="mod_na">@android:color/tertiary_text_light</color>
 </resources>
