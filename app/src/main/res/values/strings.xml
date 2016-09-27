@@ -117,4 +117,7 @@
     <string name="attach_pcard">Please insert the Display Personality Card and attach the Reference Moto Mod.</string>
     <!-- description: [Replace pCard error text] -->
     <string name="mdk_switch">Please detach the Reference Moto Mod and insert the Display Personality Card.</string>
+
+    <!-- description: [The Dip switch config title prompt] -->
+    <string name="dip_description_title">Dip switch configuration</string>
 </resources>

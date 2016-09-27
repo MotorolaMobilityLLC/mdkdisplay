@@ -28,6 +28,7 @@
 
 package com.motorola.samples.mdkdisplay;
 
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Presentation;
@@ -52,6 +53,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -110,6 +113,26 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setActionBar(toolbar);
+
+        LinearLayout dipTitle = (LinearLayout)findViewById(R.id.layout_dip_description_title);
+        dipTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LinearLayout dipDescription = (LinearLayout)findViewById(R.id.layout_dip_description);
+                ImageView imgExpand = (ImageView)findViewById(R.id.imageview_description_img);
+
+                if (dipDescription.getVisibility() == View.GONE) {
+                    dipDescription.setVisibility(View.VISIBLE);
+                    imgExpand.setImageResource(R.drawable.ic_expand_less);
+                } else {
+                    dipDescription.setVisibility(View.GONE);
+                    imgExpand.setImageResource(R.drawable.ic_expand_more);
+                }
+
+                dipDescription.setPivotY(0);
+                ObjectAnimator.ofFloat(dipDescription, "scaleY", 0f, 1f).setDuration(300).start();
+            }
+        });
 
         /** Switch button for toggle mod device display */
         Switch switchDisplay = (Switch) findViewById(R.id.display_switch);
