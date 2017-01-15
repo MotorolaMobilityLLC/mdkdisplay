@@ -383,8 +383,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
             if (null != device) {
                 tvName.setText(device.getProductString());
 
-                if (device.getVendorId() == Constants.VID_MDK
-                        && device.getProductId() == Constants.PID_MDK_DISPLAY) {
+                if ((device.getVendorId() == Constants.VID_MDK
+                        && device.getProductId() == Constants.PID_MDK_DISPLAY)
+                        || (device.getVendorId() == Constants.VID_PROJECTOR
+                        && device.getProductId() == Constants.PID_PROJECTOR)
+                        || device.getVendorId() == Constants.VID_DEVELOPER) {
                     tvName.setTextColor(getColor(R.color.mod_match));
                 } else {
                     tvName.setTextColor(getColor(R.color.mod_mismatch));
@@ -458,10 +461,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
         Switch switcher = (Switch) findViewById(R.id.display_switch);
         TextView tvReason = (TextView) findViewById(R.id.switch_reason);
         if (switcher != null) {
-            if ((device != null) && (personality.getDisplay() != null) &&
-                    ((device.getVendorId() == Constants.VID_DEVELOPER) ||
-                            ((device.getVendorId() == Constants.VID_MDK) &&
-                            (device.getProductId() == Constants.PID_MDK_DISPLAY)))) {
+            if ((device != null) && (personality.getDisplay() != null)
+                    && ((device.getVendorId() == Constants.VID_MDK
+                    && device.getProductId() == Constants.PID_MDK_DISPLAY)
+                    || (device.getVendorId() == Constants.VID_PROJECTOR
+                    && device.getProductId() == Constants.PID_PROJECTOR)
+                    || device.getVendorId() == Constants.VID_DEVELOPER)) {
                 if (tvReason != null) {
                     tvReason.setText(R.string.display_description);
                 }
