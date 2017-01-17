@@ -28,6 +28,7 @@
 
 package com.motorola.samples.mdkdisplay;
 
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Presentation;
@@ -52,6 +53,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -111,6 +114,26 @@ public class MainActivity extends Activity implements View.OnClickListener {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setActionBar(toolbar);
 
+        LinearLayout dipTitle = (LinearLayout)findViewById(R.id.layout_dip_description_title);
+        dipTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LinearLayout dipDescription = (LinearLayout)findViewById(R.id.layout_dip_description);
+                ImageView imgExpand = (ImageView)findViewById(R.id.imageview_description_img);
+
+                if (dipDescription.getVisibility() == View.GONE) {
+                    dipDescription.setVisibility(View.VISIBLE);
+                    imgExpand.setImageResource(R.drawable.ic_expand_less);
+                } else {
+                    dipDescription.setVisibility(View.GONE);
+                    imgExpand.setImageResource(R.drawable.ic_expand_more);
+                }
+
+                dipDescription.setPivotY(0);
+                ObjectAnimator.ofFloat(dipDescription, "scaleY", 0f, 1f).setDuration(300).start();
+            }
+        });
+
         /** Switch button for toggle mod device display */
         Switch switchDisplay = (Switch) findViewById(R.id.display_switch);
         if (switchDisplay != null) {
@@ -168,7 +191,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             textView.setOnClickListener(this);
         }
 
-        textView = (TextView)findViewById(R.id.mod_external_buy_mdk);
+        textView = (TextView)findViewById(R.id.mod_source_code);
         if (textView != null) {
             textView.setOnClickListener(this);
         }
@@ -359,8 +382,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
         if (null != tvName) {
             if (null != device) {
                 tvName.setText(device.getProductString());
+
+                if ((device.getVendorId() == Constants.VID_MDK
+                        && device.getProductId() == Constants.PID_MDK_DISPLAY)
+                        || (device.getVendorId() == Constants.VID_PROJECTOR
+                        && device.getProductId() == Constants.PID_PROJECTOR)
+                        || device.getVendorId() == Constants.VID_DEVELOPER) {
+                    tvName.setTextColor(getColor(R.color.mod_match));
+                } else {
+                    tvName.setTextColor(getColor(R.color.mod_mismatch));
+                }
             } else {
                 tvName.setText(getString(R.string.na));
+                tvName.setTextColor(getColor(R.color.mod_na));
             }
         }
 
@@ -427,10 +461,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
         Switch switcher = (Switch) findViewById(R.id.display_switch);
         TextView tvReason = (TextView) findViewById(R.id.switch_reason);
         if (switcher != null) {
-            if ((device != null) && (personality.getDisplay() != null) &&
-                    ((device.getVendorId() == Constants.VID_DEVELOPER) ||
-                            ((device.getVendorId() == Constants.VID_MDK) &&
-                            (device.getProductId() == Constants.PID_MDK_DISPLAY)))) {
+            if ((device != null) && (personality.getDisplay() != null)
+                    && ((device.getVendorId() == Constants.VID_MDK
+                    && device.getProductId() == Constants.PID_MDK_DISPLAY)
+                    || (device.getVendorId() == Constants.VID_PROJECTOR
+                    && device.getProductId() == Constants.PID_PROJECTOR)
+                    || device.getVendorId() == Constants.VID_DEVELOPER)) {
                 if (tvReason != null) {
                     tvReason.setText(R.string.display_description);
                 }
@@ -478,9 +514,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 /** The Developer Portal link is clicked */
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.URL_DEV_PORTAL)));
                 break;
-            case R.id.mod_external_buy_mdk:
+            case R.id.mod_source_code:
                 /** The Buy Mods link is clicked */
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.URL_MOD_STORE)));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.URL_SOURCE_CODE)));
                 break;
             case R.id.status_choose_image:
                 /** The Presentation Photo button is clicked */

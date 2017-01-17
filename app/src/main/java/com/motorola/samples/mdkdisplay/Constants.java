@@ -35,8 +35,8 @@ public class Constants {
     public static final String TAG = "MDKDisplay";
 
     public static String URL_PRIVACY_POLICY = "https://motorola.com/device-privacy";
-    public static String URL_DEV_PORTAL = "http://developer.motorola.com";
-    public static String URL_MOD_STORE = "http://developer.motorola.com/buy/";
+    public static String URL_DEV_PORTAL = "http://developer.motorola.com/build/examples/display";
+    public static String URL_SOURCE_CODE = "https://github.com/MotorolaMobilityLLC/mdkdisplay";
 
     public static final int INVALID_ID = -1;
 
@@ -47,4 +47,6 @@ public class Constants {
     public static final int VID_DEVELOPER = 0x00000042;
     public static final int PID_DEVELOPER = 0x00000001;
     public static final int PID_MDK_DISPLAY = 0x00010903;
+    public static final int VID_PROJECTOR = 0x00000128;
+    public static final int PID_PROJECTOR = 0x00050005;
 }

@@ -41,29 +41,41 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/icon_margin"
-            android:visibility="gone"
-            android:src="@drawable/ic_learn_more" />
+        android:layout_marginTop="@dimen/icon_title_margin"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/widgets_horizontal_margin"
+        android:paddingRight="@dimen/widgets_horizontal_margin">
 
         <LinearLayout
+            android:id="@+id/layout_dip_description_title"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/icon_title_margin"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/widgets_horizontal_margin"
-            android:paddingRight="@dimen/widgets_horizontal_margin">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mod_external_link"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:text="@string/dip_description_title"/>
+
+            <ImageView
+                android:id="@+id/imageview_description_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_expand_more"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_dip_description"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
 
             <View
                 android:layout_width="match_parent"
@@ -71,23 +83,13 @@
                 android:layout_marginTop="@dimen/layout_vertical_margin"
                 android:background="?android:dividerHorizontal" />
 
-            <TextView
-                android:id="@+id/mod_external_dev_portal"
-                android:layout_width="wrap_content"
+            <ImageView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:paddingTop="@dimen/widgets_vertical_margin"
-                android:text="@string/mod_external_dev_portal"
-                android:textColor="@color/colorPrimary" />
-
-            <TextView
-                android:id="@+id/mod_source_code"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:paddingTop="@dimen/widgets_vertical_margin"
-                android:text="@string/mod_source_code"
-                android:textColor="@color/colorPrimary" />
+                android:layout_marginTop="@dimen/widgets_vertical_margin"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/dip_display"/>
 
         </LinearLayout>
 
