@@ -385,8 +385,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
                 if ((device.getVendorId() == Constants.VID_MDK
                         && device.getProductId() == Constants.PID_MDK_DISPLAY)
-                        || (device.getVendorId() == Constants.VID_PROJECTOR
-                        && device.getProductId() == Constants.PID_PROJECTOR)
                         || device.getVendorId() == Constants.VID_DEVELOPER) {
                     tvName.setTextColor(getColor(R.color.mod_match));
                 } else {
@@ -464,8 +462,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
             if ((device != null) && (personality.getDisplay() != null)
                     && ((device.getVendorId() == Constants.VID_MDK
                     && device.getProductId() == Constants.PID_MDK_DISPLAY)
-                    || (device.getVendorId() == Constants.VID_PROJECTOR
-                    && device.getProductId() == Constants.PID_PROJECTOR)
                     || device.getVendorId() == Constants.VID_DEVELOPER)) {
                 if (tvReason != null) {
                     tvReason.setText(R.string.display_description);

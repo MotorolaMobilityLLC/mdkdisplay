@@ -47,6 +47,4 @@ public class Constants {
     public static final int VID_DEVELOPER = 0x00000042;
     public static final int PID_DEVELOPER = 0x00000001;
     public static final int PID_MDK_DISPLAY = 0x00010903;
-    public static final int VID_PROJECTOR = 0x00000128;
-    public static final int PID_PROJECTOR = 0x00050005;
 }
